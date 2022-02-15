@@ -1,29 +1,35 @@
+const {schema, model, Types, Schema} = require('mongoose';)
+
 const ThoughtSchema = new Schema({
     thoughtText: { type: String, required: true, min:1, max:280},
     createdAt:{type: Date, default: Date.now, timestamps:true},
-
-      
     username: { type: String, required: true, },
-    
     reactions: [{type: string,}],
 }
 
-// Use Mongoose's ObjectId data type ?
-// Default value is set to a new ObjectId ?
-//1- reactionId 
+const reactionSchema = new Schema({
 
-reactionBody: {type: String, required: true, max:200},
-username: {type:String},
- {required:true}, 
- {createdAt: timestamps:true},
- {Date: Date.now},
+reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId()
+},
+reactionBody: {
+    type: string,
+    required: true,
+    maxlength:280,
+},
 
-// Set default value to the current timestamp
-// Use a getter method to format the timestamp on query
+username:{
+    type: string,
+    required, true,
+},
 
-    
-// create the User model using the userSchema
-const Thought = model('Thought', ThoughtSchema);
+// add Day.js?
+CreatedAt: {
+    type: Date,
+    default: Date.now,
+}
 
+})
     // export the User model
 module.exports = Thought;

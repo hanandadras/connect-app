@@ -29,5 +29,3 @@ router
 .delete(deleteFriend)
 
 module.exports = router;
-
-// 18.1.7
