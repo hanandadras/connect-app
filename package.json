@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/hanandadras/connect-app/issues"
   },
-  "homepage": "https://github.com/hanandadras/connect-app#readme"
+  "homepage": "https://github.com/hanandadras/connect-app#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  }
 }

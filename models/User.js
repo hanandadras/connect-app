@@ -1,37 +1,26 @@
 const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
-    userName: {
-        type: String, Unique, Required, Trimmed
-    },
-    createdBy: {
-        type: String
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    size: {
-        type: String,
-        default: 'Large'
-    },
+    userName: { type: String, unique: true, required: true, Trim: true },
+    email: { type: String, unique: true, required: true, },
+    thought: [{ type: String, }],
+    reactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
+},
+    {
+        toJSON: {
+            virtuals: true,
 
-
-
-
-    email: {
-        type: String, Unique, Required, Trimmed
-    },
-
-
-    thoughts: {
-        type: []
+        },
+        id: false
     }
-
+);
 
 
 // create the User model using the userSchema
 const User = model('User', UserSchema);
 
-    // export the User model
-    module.exports = User;
+// export the User model
+module.exports = User;

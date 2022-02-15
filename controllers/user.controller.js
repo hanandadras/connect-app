@@ -1,4 +1,5 @@
 const { User } = require('../models');
+//functions go as methods
 
 //the find method (GET)
 const userController = {
@@ -66,10 +67,32 @@ deleteUser({ params }, res) {
       res.json(dbUserData);
     })
     .catch(err => res.status(400).json(err));
-}
-
-
-  // the functions will go in here as methods
 };
+
+
+//create friend (POST)
+
+addFriend({ body }, res) {
+  User.create(body)
+    .then(dbFriendData => res.json(dbFriendData))
+    .catch(err => res.status(400).json(err));
+},
+
+
+//delete friend (DELETE)
+
+deleteFriend({ params }, res) {
+  User.findOneAndDelete({ _id: params.id })
+    .then(dbFriendrData => {
+      if (!dbFriendrData) {
+        res.status(404).json({ message: 'No Friend found with this id!' });
+        return;
+      }
+      res.json(dbFriendData);
+    })
+    .catch(err => res.status(400).json(err));
+};
+
+
 
 module.exports = userController;
