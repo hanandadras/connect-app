@@ -2,7 +2,7 @@ const router = require('express').Router();
 //import functionality and hook it up to routes
 
 const {
-  getAllTought,
+  getAllThoughts,
   getThoughtById,
   createThought,
   updateThought,
@@ -14,8 +14,8 @@ const {
 // Set up GET all and POST at /api/tought
 router
   .route('/')
-  .get(getAllThought)
-  .post(CreateThought);
+  .get(getAllThoughts)
+  .post(createThought);
 
 // Set up GET one, PUT, and DELETE at /api/tought/:id
 router

@@ -127,29 +127,7 @@ Use a getter method to format the timestamp on query
 # SCHEMA SETTINGS
 
 This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
-//1- reactionId
 
-// Use Mongoose's ObjectId data type
-// Default value is set to a new ObjectId
-
-
-// 2- reactionBody
-
-// String
-// Required
-// 280 character maximum
-
-
-// 3- username
-
-// String
-// Required
-// createdAt
-
-// 4 -Date
-
-// Set default value to the current timestamp
-// Use a getter method to format the timestamp on query
 
 # API Routes
 

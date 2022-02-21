@@ -1,7 +1,7 @@
 const router = require('express').Router();
 //import funtionality and hook it up to routes
 const {
-  getAllUser,
+  getAllUsers,
   getUserById,
   createUser,
   updateUser,
@@ -13,7 +13,7 @@ const {
 // Set up GET all and POST at /api/user
 router
   .route('/')
-  .get(getAllUser)
+  .get(getAllUsers)
   .post(createUser);
 
 // Set up GET one, PUT, and DELETE at /api/user/:id
@@ -24,7 +24,7 @@ router
   .delete(deleteUser);
 
 router
-.router('/:id/friends/:friendId')
+.route('/:id/friends/:friendId')
 .post(addFriend)
 .delete(deleteFriend)
 

@@ -1,35 +1,38 @@
-const {schema, model, Types, Schema} = require('mongoose';)
-
-const ThoughtSchema = new Schema({
-    thoughtText: { type: String, required: true, min:1, max:280},
-    createdAt:{type: Date, default: Date.now, timestamps:true},
-    username: { type: String, required: true, },
-    reactions: [{type: string,}],
-}
+const { Schema, model, Types } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const reactionSchema = new Schema({
 
-reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId()
-},
-reactionBody: {
-    type: string,
-    required: true,
-    maxlength:280,
-},
+    reactionId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId()
+    },
+    reactionBody: {
+        type: String,
+        required: true,
+        maxlength: 280,
+    },
 
-username:{
-    type: string,
-    required, true,
-},
+    username: {
+        type: String,
+        required: true,
+    },
 
-// add Day.js?
-CreatedAt: {
-    type: Date,
-    default: Date.now,
-}
+    // add Day.js??
+    CreatedAt: {
+        type: Date,
+        default: Date.now,
+        get: (createdAtVal) => dateFormat(createdAtVal)
+    }
 
 })
-    // export the User model
+
+const thoughtSchema = new Schema({
+    thoughtText: { type: String, required: true, min: 1, max: 280 },
+    createdAt: { type: Date, default: Date.now, timestamps: true },
+    username: { type: String, required: true, },
+    reactions: [reactionSchema],
+})
+// export the User model
+const Thought = model('Thought', thoughtSchema);
 module.exports = Thought;
